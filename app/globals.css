@@ -1,0 +1,485 @@
+/* =====================
+   RESET & BASE
+   ===================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #f0f4f8;
+  color: #1a1a2e;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+main {
+  flex: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  width: 100%;
+}
+
+/* =====================
+   ANIMAÇÕES
+   ===================== */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.08); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
+
+@keyframes countUp {
+  from { opacity: 0; transform: scale(0.5); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* =====================
+   HEADER
+   ===================== */
+header {
+  background: #1a1a2e;
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header .logo {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+header nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+header nav a {
+  color: #ccc;
+  font-size: 0.95rem;
+  transition: color 0.2s;
+}
+
+header nav a:hover {
+  color: #e63946;
+}
+
+/* =====================
+   POKEBOLA (HEADER)
+   ===================== */
+.pokeball {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 3px solid #333;
+  position: relative;
+  overflow: hidden;
+  animation: spin 2.5s linear infinite;
+  flex-shrink: 0;
+}
+
+.pokeball-top {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 50%;
+  background: #e63946;
+}
+
+.pokeball-bottom {
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 100%;
+  height: 50%;
+  background: white;
+}
+
+.pokeball-middle {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 100%;
+  height: 3px;
+  background: #333;
+  z-index: 1;
+}
+
+.pokeball-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid #333;
+  z-index: 2;
+}
+
+/* =====================
+   FOOTER
+   ===================== */
+footer {
+  background: #1a1a2e;
+  color: #888;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.85rem;
+}
+
+footer strong {
+  color: #e63946;
+}
+
+/* =====================
+   PÁGINA PRINCIPAL
+   ===================== */
+.page-title {
+  text-align: center;
+  font-size: 1.6rem;
+  margin-bottom: 2rem;
+  color: #e63946;
+  animation: fadeInUp 0.5s ease;
+}
+
+.pokemon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1.2rem;
+}
+
+/* =====================
+   POKEMON CARD
+   ===================== */
+.pokemon-card {
+  background: white;
+  border-radius: 1rem;
+  padding: 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+  animation: fadeInUp 0.4s ease both;
+}
+
+.pokemon-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+
+.pokemon-card:hover img {
+  animation: float 1s ease-in-out infinite;
+}
+
+.pokemon-card img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+}
+
+.pokemon-card .number {
+  font-size: 0.75rem;
+  color: #aaa;
+}
+
+.pokemon-card .name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  color: #1a1a2e;
+}
+
+/* =====================
+   PÁGINA DE DETALHES
+   ===================== */
+.detail-container {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  background: white;
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  max-width: 700px;
+  margin: 0 auto;
+  animation: fadeInUp 0.4s ease;
+}
+
+.detail-container img {
+  width: 220px;
+  height: 220px;
+  object-fit: contain;
+  animation: float 3s ease-in-out infinite;
+}
+
+.detail-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.detail-info h1 {
+  font-size: 2rem;
+  text-transform: capitalize;
+  color: #e63946;
+}
+
+.detail-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.detail-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #888;
+  font-weight: 600;
+}
+
+.types {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.type {
+  padding: 0.2rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  background: #ccc;
+  color: white;
+}
+
+.type-fire     { background: #F08030; }
+.type-water    { background: #6890F0; }
+.type-grass    { background: #78C850; }
+.type-poison   { background: #A040A0; }
+.type-normal   { background: #A8A878; }
+.type-flying   { background: #A890F0; }
+.type-bug      { background: #A8B820; }
+.type-electric { background: #F8D030; color: #333; }
+.type-psychic  { background: #F85888; }
+.type-rock     { background: #B8A038; }
+.type-ground   { background: #E0C068; }
+.type-ice      { background: #98D8D8; }
+.type-dragon   { background: #7038F8; }
+.type-ghost    { background: #705898; }
+.type-dark     { background: #705848; }
+.type-steel    { background: #B8B8D0; }
+.type-fairy    { background: #EE99AC; }
+.type-fighting { background: #C03028; }
+
+.abilities-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.abilities-list li {
+  text-transform: capitalize;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 600px) {
+  .detail-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* =====================
+   PÁGINA SOBRE — HERO
+   ===================== */
+.sobre-container {
+  max-width: 860px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.sobre-hero {
+  background: #1a1a2e;
+  border-radius: 1.2rem;
+  padding: 3rem 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  animation: fadeIn 0.6s ease;
+}
+
+.sobre-pokeball-bg {
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 30px solid rgba(230, 57, 70, 0.15);
+  animation: spin 12s linear infinite;
+}
+
+.sobre-titulo {
+  font-size: 2.2rem;
+  color: #e63946;
+  margin-bottom: 0.5rem;
+  animation: fadeInUp 0.5s ease 0.1s both;
+}
+
+.sobre-subtitulo {
+  color: #aaa;
+  font-size: 1rem;
+  animation: fadeInUp 0.5s ease 0.2s both;
+}
+
+/* =====================
+   SOBRE — GRID DE CARDS
+   ===================== */
+.sobre-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+}
+
+.sobre-card {
+  background: white;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  animation: fadeInUp 0.5s ease both;
+  transition: transform 0.2s, box-shadow 0.2s;
+  border-top: 4px solid #e63946;
+}
+
+.sobre-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.1);
+}
+
+.sobre-card:nth-child(1) { animation-delay: 0.1s; }
+.sobre-card:nth-child(2) { animation-delay: 0.2s; }
+.sobre-card:nth-child(3) { animation-delay: 0.3s; }
+.sobre-card:nth-child(4) { animation-delay: 0.4s; }
+
+.sobre-card-icon {
+  font-size: 1.8rem;
+  animation: float 3s ease-in-out infinite;
+}
+
+.sobre-card h2 {
+  font-size: 1rem;
+  color: #e63946;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.sobre-card p {
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+.sobre-card ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.sobre-card ul li {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.sobre-card ul li::before {
+  content: '→ ';
+  color: #e63946;
+}
+
+/* =====================
+   SOBRE — STATS
+   ===================== */
+.sobre-stats {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  background: #f0f4f8;
+  border-radius: 0.75rem;
+  padding: 0.75rem 0.5rem;
+}
+
+.stat-num {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #e63946;
+  animation: countUp 0.6s ease both;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+@media (max-width: 600px) {
+  .sobre-cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
