@@ -1,6 +1,6 @@
 # PokeExplorer 🔴
 
-## Link Vercel https://trabalho-chi-khaki.vercel.app/
+## Link Vercel https://trabalho-poke-explorer.vercel.app/
 
 
 Catálogo interativo de Pokémon desenvolvido com **Next.js 14 (App Router)**, consumindo a [PokéAPI](https://pokeapi.co).
